@@ -27,7 +27,16 @@ public class UserController {
         user.setUsername(userName);
         user.setPassword(password);
 
-        String message = "Welcome to Stackroute" + " "+user.getUsername();
+        Services addService=new Services();
+        String message=addService.message(user);
+
+//        ModelAndView mv=new ModelAndView();
+//        mv.setViewName("display");
+//        mv.addObject("result",message);
+//
+//        return mv;
+
+//        String message = "Welcome to Stackroute" + " "+user.getUsername();
 
         ModelAndView modelView = new ModelAndView();
         modelView.setViewName("login");
