@@ -1,14 +1,12 @@
 package com.stackroute.controller;
 
 
+import com.stackroute.DB.Crudoperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -29,12 +27,18 @@ public class UserController {
 
         String message = "Welcome to Stackroute" + " "+user.getUsername();
 
+
+        Crudoperation connection = new Crudoperation();
+
+        connection.insertCustomer(user.getUsername(),user.getPassword());
+        connection.displayData();
         ModelAndView modelView = new ModelAndView();
         modelView.setViewName("login");
         modelView.addObject("result",message);
         return modelView;
 
     }
+
 
 }
 
